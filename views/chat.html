@@ -172,7 +172,7 @@ function newMessage() {
           }// if card
           else if (message == 'quickReplies'){     
             replies = resp[i].quickReplies.quickReplies;
-            var html = '<li class="replies"><h3><b> Escolha uma das Opções da Curso</b></h3><br>';
+            var html = '<li class="replies"><h3><b> Escolha uma opção para saber mais</b></h3><br>';
             for(var j=0; j < replies.length; j++){
               html += '<button class="w3-button w3-white w3-border w3-round-large" onclick="$(\'.message-input input\').val(\'' + replies[j] + '\');newMessage()">'+replies[j]+ '</button>'; 
             }
