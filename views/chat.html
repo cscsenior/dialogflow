@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="">
+
+<head>
+  
+   <meta charset="UTF-8">
+
+  
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBQYAqbfgaMfmcSLpRdpAHRiG4nDBXurPk",
+        authDomain: "curso-1619b.firebaseapp.com",
+        databaseURL: "https://curso-1619b.firebaseio.com",
+        projectId: "curso-1619b",
+        storageBucket: "curso-1619b.appspot.com",
+        messagingSenderId: "232338219484",
+        appId: "1:232338219484:web:54badf9f4636469b"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    
+  
+  
+    <script type="text/javascript">
+      initApp = function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // User is signed in.
+            displayName = user.displayName;
+            photoURL = user.photoURL;    
+            
+            $('<img src="'+photoURL+'" alt="" />').appendTo($('.contact-profile'));
+            $('<p>'+displayName+'</p>').appendTo($('.contact-profile'));
+
+            
+            
+            
+          } else {
+            window.location.replace("/login")
+          }
+        }, function(error) {
+          console.log(error);
+        });
+      };
+
+      window.addEventListener('load', function() {
+        initApp()
+      });
+    </script>
+  
+<!-- Bootstrap -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<!-- JQuery  -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Google Scripts -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300" rel="stylesheet" type="text/css">
+<script src="https://use.typekit.net/hoy3lrg.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+<!-- CSS's -->
+<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
+<link rel="stylesheet" href="chat.css">
+
+<!-- W3 CSS -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+
+
+</head>
+
+<body>
+<div id="frame">
+	<div class="content">
+		<div class="contact-profile">
+      <!-- START: Nome e foto do Usuário -->
+      <!--
+      <img src="https://cdn.glitch.com/b55990e3-895c-4141-b7d2-3e12d9d61fae%2Frogerio_perfil2.jpg?1558499985649" alt="" />
+      <p>Rogerio Guimaraes</p>
+      -->
+      
+      <!-- END: Nome e foto do Usuário -->
+			<div class="social-media">
+				<i class="fa fa-facebook" aria-hidden="true"></i>
+				<i class="fa fa-twitter" aria-hidden="true"></i>
+				 <i class="fa fa-instagram" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div class="messages">
+			<ul>      
+        <!-- tags <li> que correspondem as mensagens, serão preenchidas via AJAX com JQUERY, chamando a DetectIntent -->
+			</ul>
+		</div>
+		<div class="message-input">
+			<div class="wrap">
+			<input type="text" placeholder="Digite aqui sua mensagem..." />
+			<i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+			<button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+  $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+
+  $("#profile-img").click(function() {
+    $("#status-options").toggleClass("active");
+  });
+
+  $(".expand-button").click(function() {
+    $("#profile").toggleClass("expanded");
+    $("#contacts").toggleClass("expanded");
+});
+
+function newMessage() {
+    message = $(".message-input input").val();
+    if($.trim(message) == '') {
+      return false;
+    }
+    
+    $('<li class="sent"><img src="' + photoURL + '" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
+    $('.message-input input').val(null);
+    $('.contact.active .preview').html('<span>You: </span>' + message);
+    $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+  
+    let request = $.ajax({
+      url: '/detectIntent',
+      type: 'POST',
+      data: {
+        "texto":message
+      },
+      dataType: "json"
+    })
+    request.done((msg)=>{
+      
+      texto = msg[0].queryResult.fulfillmentText;
+      if ($.trim(texto) != ''){
+          $('<li class="replies"><img src="https://cdn.glitch.com/b55990e3-895c-4141-b7d2-3e12d9d61fae%2Fbot.jpeg?1558500587637" alt="" /><p>' 
+            + texto + '</p></li>').appendTo($('.messages ul'));
+
+      } else {
+        resp = msg[0].queryResult.fulfillmentMessages;
+        
+        for( let i=0 ; resp.length; i++){
+          message = resp[i].message;
+          if (message == 'card'){
+            
+            let html = `<li class="replies">
+                <div class="w3-card-4 test" style="width:90%;max-width:400px;">
+                <img src="`+ resp[i].card.imageUri + `" alt="Avatar" style="width:100%;opacity:0.85">
+                <div class="w3-container">
+                <h3><b>`+ resp[i].card.title + `</b></h3> 
+                <h4><b>`+ resp[i].card.subtitle + `</b></h4>
+                <br>
+                <button class="w3-button w3-block w3-dark-grey" onclick="window.open('`+ resp[i].card.buttons[0].postback + `');">`+ resp[i].card.buttons[0].text + `</button>
+                <br> 
+                </div>
+                </div>
+                </li> `
+            
+            
+               $(html).appendTo($('.messages ul'));
+
+          }// if card
+          else if (message == 'quickReplies'){     
+            replies = resp[i].quickReplies.quickReplies;
+            var html = '<li class="replies"><h3><b> Escolha uma das Opções da Curso</b></h3><br>';
+            for(var j=0; j < replies.length; j++){
+              html += '<button class="w3-button w3-white w3-border w3-round-large" onclick="$(\'.message-input input\').val(\'' + replies[j] + '\');newMessage()">'+replies[j]+ '</button>'; 
+            }
+            html += '</li>';
+            $(html).appendTo($('.messages ul'));
+            
+          } // quickReplies
+          else if (message == 'image'){ 
+            
+            let html = '<li class="replies"> <div class="imagem"> <img src="' + resp[i].image.imageUri +  '" class="w3-hover-sepia" style="width:90%;"></div></li>';
+            $(html).appendTo($('.messages ul'));
+            
+            
+          }
+          
+                    
+        } // for
+        
+        
+      }
+      
+      $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+      
+
+      
+      
+    });
+    request.fail()
+  
+
+  
+};
+
+$('.submit').click(function() {
+  newMessage();
+});
+
+$(window).on('keydown', function(e) {
+  if (e.which == 13) {
+    newMessage();
+    return false;
+  }
+});
+
+</script>
+</body>
+
+</html>
+
+

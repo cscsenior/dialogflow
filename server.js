@@ -31,6 +31,10 @@ app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/index.html");
 });
 
+app.get("/chat", (request, response) => {
+  response.sendFile(__dirname + "/views/chat.html");
+});
+
 app.post('/detectIntent',function(request,response){
   
   let texto = request.body.texto;
