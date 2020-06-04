@@ -15,12 +15,16 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+// -------- Sessions Client -------
 const projectId = 'gmtel-wnklwu';
 const sessionId = uuid.v4();
 const sessionClient = new dialogflow.SessionsClient();
 const sessionPath = sessionClient.sessionPath(projectId,sessionId);
 console.log(sessionPath);
 
+// -------- Intents Client -------
+const intentsClient = new dialogflow.IntentsClient();
+const projectAgentPath = intentsClient.projectAgentPath(projectId);
 
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html
@@ -56,6 +60,20 @@ app.post('/detectIntent',function(request,response){
   })
   .catch(err => console.log(err))
 })
+
+
+app.get('/listarIntents', function(request,response){
+  
+  
+  
+  
+});
+
+function listarIntents() {
+  let params = {
+    
+  }
+}
 
 
 // listen for requests :)
