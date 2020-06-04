@@ -94,7 +94,8 @@ app.get('/listarIntents', async function(request,response){
 
 async function listarIntents() {
   let params = {
-    parent: projectAgentPath
+    parent: projectAgentPath,
+    intentView: 'INTENT_VIEW_FULL'
   }
   const results = await intentsClient.listIntents(params);
   return results;
