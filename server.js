@@ -31,7 +31,27 @@ app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/index.html");
 });
 
-app.post
+app.post('/detectIntent',function(request,response){
+  
+  let texto = request.body.texto;
+  
+  const query = {
+    session: sessionPath,
+    queryInput:{
+      text: {      
+          text: 'ola',
+          languageCode: 'pt'
+      }
+    }
+  }
+  
+    sessionClient.detectIntent(query)
+    .then((res)=>{
+    response.json(res)
+  
+  })
+  .catch(err => console.log(err))
+})
 
 
 // listen for requests :)
