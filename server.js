@@ -15,14 +15,12 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-const projectID
+const projectId = 'gmtel-wnklwu';
+const sessionId = uuid.v4();
+const sessionClient = new dialogflow.sessionClient();
+const sessionPath = sessionClient.sessionPath(projectId,sessionId);
+console.log(sessionPath);
 
-// our default array of dreams
-const dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
 
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html
