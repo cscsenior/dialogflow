@@ -6,6 +6,15 @@
 const express = require("express");
 const app = express();
 
+const dialogflow = require('dialogflow');
+const uuid = require('uuid');
+
+const bodyParser = require('body-parser')
+app.use( bodyParser.json() );
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
 // our default array of dreams
 const dreams = [
   "Find and count some sheep",

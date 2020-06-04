@@ -10,7 +10,10 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "dialogflow": "*",
+    "body-parser": "*",
+    "uuid": "*"
   },
   "engines": {
     "node": "12.x"
