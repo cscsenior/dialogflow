@@ -39,7 +39,7 @@ app.post('/detectIntent',function(request,response){
     session: sessionPath,
     queryInput:{
       text: {      
-          text: 'ola',
+          text: texto,
           languageCode: 'pt'
       }
     }
