@@ -74,13 +74,13 @@ app.get('/listarIntents', async function(request,response){
     item.trainingPhrases.forEach((training)=>{
       training.parts.forEach((part)=>{
         
-        html += "<TD> Frase ==> " + part.text + "</TD>"
+        html += "<TD> Intenção: " + part.text + "</TD>"
         
       })
     })
     // Resposta Padrao
     item.messages.forEach((message)=>{
-      html += "<TD> Resposta Padrão ==> " + message.text.text + "</TD>"
+      html += "<TR><TD> Resposta Padrão ==> " + message.text.text + "</TD><TR>"
     })
   })
   
