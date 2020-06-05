@@ -68,7 +68,7 @@ app.get('/listarIntents', async function(request,response){
   
   results.forEach((item)=>{
     
-    html += "<TR><TD>" + item.displayName + "</TD>"
+    html += "<TR><TD>" + item.displayName + "--"+item.name+"--</TD>"
     
     //Training Phrases
     item.trainingPhrases.forEach((training)=>{
@@ -117,7 +117,7 @@ async function criarIntent(){
       type: 'EXAMPLE',
       parts: [
         {
-          text: "como agendar aula"
+          text: "como agendar aula "
         },
         {
           text: "hoje",
@@ -130,7 +130,7 @@ async function criarIntent(){
       type: 'EXAMPLE',
       parts: [
         {
-          text: "fazer aula"
+          text: "fazer aula "
         }
       ]
     }
@@ -174,6 +174,18 @@ async function criarIntent(){
   return result;
 
 }
+
+app.get('/apagarIntent', async function(request,response){
+  
+  let params = {
+    name: 'projects/gmtel-wnklwu/agent/intents/585f1d8d-e113-4279-9306-92097d8f7582'
+  }
+  
+  let result = await intentsClient.deleteIntent(params);
+  
+  response.json(result);
+  
+})
 
 
 // listen for requests :)
