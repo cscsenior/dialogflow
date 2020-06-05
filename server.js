@@ -100,6 +100,81 @@ async function listarIntents() {
   return results;
 }
 
+// Criar Intent
+app.get('/criarIntent',async function(request,response){
+  
+  let resultado = await criarIntent();
+  
+  response.json(resultado);
+  
+  
+})
+
+async function criarIntent(){
+  
+  let frases = [
+    {
+      type: 'EXAMPLE',
+      parts: [
+        {
+          text: "como agendar aula"
+        },
+        {
+          text: "hoje",
+          entityType: "@sys.date-time",
+          alias: "data-agendamento"
+        }
+      ]
+    },
+    {
+      type: 'EXAMPLE',
+      parts: [
+        {
+          text: "fazer aula"
+        }
+      ]
+    }
+  ]
+    
+  let respostas = [
+    {
+      text: {
+        text: ["Sua aula foi agendada","Aula agendada com sucesso"]
+      }
+    }
+  ]
+  
+  let parametros = [
+    {
+      displayName: "data-agendamento",
+      entityTypeDisplayName: "@sys.date-time",
+      mandatory: true,
+      prompts: ["Para quando vocer quer a aula","Quando seria a aula"]
+    }
+  ]
+  
+  
+  let intent = {
+    displayName: 'agendar.aula',
+    webhookState: 'WEBHOOK_STATE_UNSPECIFIED',
+    trainingPhrases: frases,
+    messages: respostas,
+    parameters: parametros
+  }
+  
+  let params = {
+    parent: projectAgentPath,
+    intent: intent
+  }
+  
+  const [result] = await intentsClient.createIntent(params);
+  
+  console.log(result);
+  
+  return result;
+
+}
+
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
