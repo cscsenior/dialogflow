@@ -68,20 +68,19 @@ app.get('/listarIntents', async function(request,response){
   
   results.forEach((item)=>{
     
-    html += "<TR><TD>" + item.displayName + "--"+item.name+"--</TD></TR>"
-    
-    // Resposta Padrao
-    item.messages.forEach((message)=>{
-      html += "<TR><TD> Resposta Padrão ==> " + message.text.text + "</TD></TR>"
-    })
+    html += "<TR><TD>" + item.displayName + "</TD>"
     
     //Training Phrases
     item.trainingPhrases.forEach((training)=>{
       training.parts.forEach((part)=>{
         
-        html += "<TR><TD> Frase ==> " + part.text + "</TD></TR>"
+        html += "<TD> Frase ==> " + part.text + "</TD>"
         
       })
+    })
+    // Resposta Padrao
+    item.messages.forEach((message)=>{
+      html += "<TD> Resposta Padrão ==> " + message.text.text + "</TD>"
     })
   })
   
