@@ -99,7 +99,7 @@
         </div>
         <div class="message-input">
             <div class="wrap">
-                <input type="text" placeholder="Digite aqui sua mensagem..."/>
+                <input type="text" placeholder="Digite aqui a vossa mensagem..."/>
                 <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
                 <button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
             </div>
@@ -174,7 +174,7 @@
                     }// if card
                     else if (message == 'quickReplies') {
                         replies = resp[i].quickReplies.quickReplies;
-                        var html = '<li class="replies"><h3><b> Escolha uma opção para saber mais</b></h3><br>';
+                        var html = '<li class="replies"><h3><b> Ja ouviste falar de:</b></h3><br>';
                         for (var j = 0; j < replies.length; j++) {
                             html += '<button class="w3-button w3-white w3-border w3-round-large" onclick="$(\'.message-input input\').val(\'' + replies[j] + '\');newMessage()">' + replies[j] + '</button>';
                         }

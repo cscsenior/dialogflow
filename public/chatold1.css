@@ -32,7 +32,7 @@ body {
 
 #frame .content .contact-profile {
     width: 100%;
-    background: #00A9D4;
+    background: linear-gradient(135deg, rgb(42, 39, 218) 0%, rgb(0, 204, 255) 100%);
     color: white;
     display: flex;
     padding: 10px;
@@ -170,7 +170,7 @@ body {
     width: 50px;
     height: 50px;
     cursor: pointer;
-    background: #00A9D4;
+    background: linear-gradient(135deg, rgb(42, 39, 218) 0%, rgb(0, 204, 255) 100%);
     color: #fff;
     border-radius: 50%;
     box-shadow: rgba(0, 77, 255, 0.5) 0px 4px 24px;
@@ -179,7 +179,7 @@ body {
 
 #frame .content .message-input .wrap button:hover {
     background: white;
-    color: #00A9D4;
+    color: #1b7ef9;
     box-shadow: rgba(0, 77, 255, 0.24) 0px 8px 32px;
 }
 
