@@ -153,7 +153,7 @@
                     if (message == 'quickReplies') {
                         
                         replies = resp[i].quickReplies.quickReplies;
-                        var html = '<li class="replies">Escolha uma opção para saber mais<br>';
+                        var html = '<li class="replies"><p>Em que posso ajudar? Estes podem ser temas do seu interesse:</p></li><br>';
                         for (var j = 0; j < replies.length; j++) {
                             html += '<button class="w3-button w3-white w3-border w3-round-large" onclick="$(\'.message-input input\').val(\'' + replies[j] + '\');newMessage()">' + replies[j] + '</button>';
                         }
