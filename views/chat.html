@@ -147,7 +147,17 @@
             if ($.trim(texto) != '') {
                 $('<li class="replies"><p>' + texto + '</p></li>').appendTo($('.messages ul'));
 
-            } else {
+            } else if (message == 'quickReplies') {
+                        
+                        replies = resp[i].quickReplies.quickReplies;
+                        var html = '<li class="replies"><h3><b> Escolha uma opção para saber mais</b></h3><br>';
+                        for (var j = 0; j < replies.length; j++) {
+                            html += '<button class="w3-button w3-white w3-border w3-round-large" onclick="$(\'.message-input input\').val(\'' + replies[j] + '\');newMessage()">' + replies[j] + '</button>';
+                        }
+                        html += '</li>';
+                        $(html).appendTo($('.messages ul'));
+
+                    } else {
                 resp = msg[0].queryResult.fulfillmentMessages;
 
                 for (let i = 0; resp.length; i++) {
@@ -172,6 +182,7 @@
 
                     }// if card
                     else if (message == 'quickReplies') {
+                        
                         replies = resp[i].quickReplies.quickReplies;
                         var html = '<li class="replies"><h3><b> Escolha uma opção para saber mais</b></h3><br>';
                         for (var j = 0; j < replies.length; j++) {
