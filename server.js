@@ -56,7 +56,7 @@ app.post('/detectIntent',function(request,response){
     sessionClient.detectIntent(query)
     .then((res)=>{
     response.json(res)
-  
+    
   })
   .catch(err => console.log(err))
 })
