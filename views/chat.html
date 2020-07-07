@@ -145,8 +145,7 @@
 
             texto = msg[0].queryResult.fulfillmentText;
             if ($.trim(texto) != '') {
-                $('<li class="replies"><p>'
-                    + texto + '</p></li>').appendTo($('.messages ul'));
+                $('<li class="replies"><p>' + texto + '</p></li>').appendTo($('.messages ul'));
 
             } else {
                 resp = msg[0].queryResult.fulfillmentMessages;
