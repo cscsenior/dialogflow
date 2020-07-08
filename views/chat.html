@@ -106,7 +106,7 @@
 
 <script>
 
-    $(".messages").animate({scrollTop: $(document).height()}, "fast");
+    //$(".messages").animate({scrollTop: $(document).height()}, "fast");
 
     $("#profile-img").click(function () {
         $("#status-options").toggleClass("active");
@@ -163,7 +163,7 @@
             } else {
                 resp = msg[0].queryResult.fulfillmentMessages;
 
-                for (let i = 0; resp.length; i++) {
+                for (let i = 0; i<resp.length; i++) {
                     message = resp[i].message;
                     if (message == 'card') {
 
