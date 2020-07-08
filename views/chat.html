@@ -185,7 +185,6 @@
 
                     }// if card
                     else if (message == 'quickReplies') {
-                                    console.log('help')  
                         
                         replies = resp[i].quickReplies.quickReplies;
                         var html = '<li class="replies"><h3><b> Escolha uma opção para saber mais</b></h3><br>';
@@ -209,8 +208,8 @@
 
 
             }
-          $(".messages").animate({scrollTop: $(document).height()}, "fast");
-          console.log("dfjefi");
+          //$(".messages").animate({scrollTop: $(document).height()}, "fast");
+          $(".messages").scrollTop($(".messages")[0].scrollHeight);
 
         });
       
@@ -220,19 +219,14 @@
 
     };
   
-    function scrolldown() {
-        console.log('help');
-    }
   
     $('.submit').click(function () {
         newMessage();
-        scrolldown();
     });
 
     $(window).on('keydown', function (e) {
         if (e.which == 13) {
             newMessage();
-            scrolldown();
             return false;
         }
     });
