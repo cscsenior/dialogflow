@@ -35,15 +35,15 @@ body {
     background: #00A9D4;
     color: white;
     display: flex;
-    padding: 5px;
+    padding: 2px;
     align-items: center;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
 
 #frame .content .contact-profile .img {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 50px;
     border-radius: 50%;
     background-size: contain;
     background-position: center;
@@ -91,7 +91,7 @@ body {
 }
 
 #frame .content .messages ul li.sent p {
-    background: #435f7a;
+    background: #00A9D4;
     background: linear-gradient(135deg, rgb(42, 39, 218) 0%, rgb(0, 204, 255) 100%);
     color: white;
     float: right;
