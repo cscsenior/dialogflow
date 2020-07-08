@@ -207,7 +207,11 @@
 
             }
 
-            $(".messages").animate({scrollTop: $(document).height()}, "fast");
+            //$(".messages").animate({scrollTop: $(document).height()}, "fast");
+          
+          var objDiv = document.getElementById("messages");
+          objDiv.scrollTop = objDiv.scrollHeight;
+          alert(objDiv);
 
 
         });
