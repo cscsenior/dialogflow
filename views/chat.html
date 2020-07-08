@@ -156,8 +156,11 @@
                         }
                         html += '</li>';
                         $(html).appendTo($('.messages ul'));
+                      
                     }
+                   $(".messages").animate({scrollTop: $(document).height()}, "fast");
                 }
+              
             } else {
                 resp = msg[0].queryResult.fulfillmentMessages;
 
@@ -208,10 +211,10 @@
             }
 
           $(".messages").animate({scrollTop: $(document).height()}, "fast");
-
+          console.log('help')
 
         });
-      console.log('help')
+      
         request.fail()
 
 
