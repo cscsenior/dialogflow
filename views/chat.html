@@ -106,7 +106,6 @@
 
 <script>
 
-    //$(".messages").animate({scrollTop: $(document).height()}, "fast");
 
     $("#profile-img").click(function () {
         $("#status-options").toggleClass("active");
@@ -116,6 +115,10 @@
         $("#profile").toggleClass("expanded");
         $("#contacts").toggleClass("expanded");
     });
+  
+    var html = '<li class="replies"><p>Olá, eu sou o Assistente da GMtel, um colaborador privilegiado, que faz o que mais gosta, todos os dias e a qualquer hora do dia, ou da noite!</p></li><br>';
+    html += '</li>';  
+    $(html).appendTo($('.messages ul')); 
 
     function newMessage() {
         let message = $(".message-input input").val();
@@ -128,7 +131,7 @@
         $('.message-input input').val(null);
         $('.contact.active .preview').html('<span>You: </span>' + message);
         $(".messages").animate({scrollTop: $(document).height()}, "fast");
-
+      
         let request = $.ajax({
             url: '/detectIntent',
             type: 'POST',
