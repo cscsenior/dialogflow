@@ -143,9 +143,8 @@
             if ($.trim(texto) != '') {
                 $('<li class="replies"><p>' + texto + '</p></li>').appendTo($('.messages ul'));
                 resp = msg[0].queryResult.fulfillmentMessages;
-                for (let i = 0; resp.length; i++) {
-                  if(resp[i])  
-                  message = resp[i].message;
+                for (let i = 0; i<resp.length; i++) {
+                  message = resp[i]['message'];
                     if (message == 'quickReplies') {
                         
                         replies = resp[i].quickReplies.quickReplies;
@@ -210,11 +209,12 @@
 
 
             }
+          $(".messages").animate({scrollTop: $(document).height()}, "fast");
           console.log("dfjefi");
 
         });
       
-         $(".messages").animate({scrollTop: $(document).height()}, "fast");
+         
         request.fail()
 
 
