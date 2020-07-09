@@ -274,10 +274,11 @@ body {
 }
 .w3-right{
   position:absolute;
-  top:5px; /*Change as needed*/
+  top:5px;
   right:0;
   white-space: nowrap;
 }
+
 .icog{
   font-size: 12px;
   color: #ffffff;
@@ -285,3 +286,8 @@ body {
 .icoh{
   font-size: 10px;
 }
+
+.icoj{
+  position:absolute;
+  top:12px;
+};
