@@ -10,6 +10,47 @@
 
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-auth.js"></script>
 
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBQYAqbfgaMfmcSLpRdpAHRiG4nDBXurPk",
+            authDomain: "curso-1619b.firebaseapp.com",
+            databaseURL: "https://curso-1619b.firebaseio.com",
+            projectId: "curso-1619b",
+            storageBucket: "curso-1619b.appspot.com",
+            messagingSenderId: "232338219484",
+            appId: "1:232338219484:web:54badf9f4636469b"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+
+    <script type="text/javascript">
+        initApp = function () {
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    // User is signed in.
+                    displayName = user.displayName;
+                    photoURL = user.photoURL;
+
+                    $('<img src="' + photoURL + '" alt="" />').appendTo($('.contact-profile'));
+                    $('<p>' + displayName + '</p>').appendTo($('.contact-profile'));
+
+
+                } else {
+                    //window.location.replace("/login")
+                }
+            }, function (error) {
+                console.log(error);
+            });
+        };
+
+        window.addEventListener('load', function () {
+            initApp()
+        });
+    </script>
+
     <!-- Bootstrap -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
