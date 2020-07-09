@@ -85,8 +85,7 @@
 
         $('.message-input input').val(null);
         $('.contact.active .preview').html('<span>You: </span>' + message);
-        $(".messages").animate({scrollTop: $(document).height()}, "fast");
-      
+        $(".messages").scrollTop($(".messages")[0].scrollHeight);
         let request = $.ajax({
             url: '/detectIntent',
             type: 'POST',
