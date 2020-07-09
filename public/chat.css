@@ -257,5 +257,8 @@ body {
   margin: 30px;
 }
 .w3-right{
-  float: right;
+  position:absolute;
+  top:5px; /*Change as needed*/
+  right:0;
+  white-space: nowrap;
 }
