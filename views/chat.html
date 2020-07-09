@@ -46,8 +46,8 @@
             <!-- START: Nome e foto do Usuário -->
             <span class="img" style="background-image: url(https://cdn.glitch.com/b190f91f-3f17-4479-9503-5e10d5788055%2Flogogmtl.png?v=1594208802526)"></span>
             <div class="w3-right">
-                <button class="btn bg-transparent" ><i class="fa fa-window-minimize"></i></button>
-                <button class="btn bg-transparent" ><i class="fa fa-close"></i></button>
+                <button class="btn bg-transparent" id="bminimize"><i class="fa fa-window-minimize"></i></button>
+                <button class="btn bg-transparent" id="bclose"><i class="fa fa-close"></i></button>
             </div>
         </div>
         <div class="messages">
@@ -79,6 +79,16 @@
     var html = '<li class="replies"><p>Olá, eu sou o Assistente Inteligente da GMtel, um colaborador privilegiado, que faz o que mais gosta, todos os dias e a qualquer hora do dia, ou da noite!</p><br><br><p>Somos especializados em Contact Center e Colaboração.<br>Posso ajudar nalgum tema específico?</p></li><br>';
     html += '</li>';  
     $(html).appendTo($('.messages ul')); 
+
+    $("#bminimize").click(function(){
+        $(".messages").hide();
+        $(".message-input").hide();
+        console.log("bm");
+    });
+
+    $("#bclose").click(function(){
+        console.log("bc");
+    });
 
     function newMessage() {
         let message = $(".message-input input").val();
