@@ -13,6 +13,10 @@ body {
   background-color: transparent;
 }
 
+#frame1{
+  display: none;
+}
+
 #frame {
   width: 100%;
   height: 100%;
@@ -30,7 +34,7 @@ body {
   border-radius: 15px;
 }
 
-#frame .content .contact-profile {
+#frame .content .contact-profile, #frame1 .content .contact-profile {
   width: 100%;
   background: #00A9D4;
   color: white;
@@ -41,7 +45,7 @@ body {
   border-top-right-radius: 15px;
 }
 
-#frame .content .contact-profile .img {
+#frame .content .contact-profile .img, #frame1 .content .contact-profile .img {
   width: 80px;
   height: 50px;
   border-radius: 50%;
@@ -51,12 +55,12 @@ body {
   display: inline-block;
 }
 
-#frame .content .contact-profile div {
+#frame .content .contact-profile div, #frame1 .content .contact-profile div {
   margin-left: 250px;
   flex: 1;
 }
 
-#frame .content .contact-profile div p {
+#frame .content .contact-profile div p, #frame1 .content .contact-profile div p {
   margin-top: -4px;
 }
 
