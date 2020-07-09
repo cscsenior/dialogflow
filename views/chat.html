@@ -71,7 +71,7 @@
             <span class="img" style="background-image: url(https://cdn.glitch.com/b190f91f-3f17-4479-9503-5e10d5788055%2Flogogmtl.png?v=1594208802526)"></span>
             <div class="w3-right">
                 <button class="btn bg-transparent" id="bmaximize"><i class="fa fa-window-maximize"></i></button>
-                <button class="btn bg-transparent" id="bclose"><i class="fa fa-close"></i></button>
+                <button class="btn bg-transparent" id="bclose1"><i class="fa fa-close"></i></button>
             </div>
         </div>
     </div>
@@ -83,7 +83,7 @@
             <!-- START: Nome e foto do Usuário -->
             <span class="img" style="background-image: url(https://cdn.glitch.com/b190f91f-3f17-4479-9503-5e10d5788055%2Flogogmtl.png?v=1594208802526)"></span>
             <div class="w3-right">
-                <button class="btn bg-transparent" id="bopen">Open chat<i class="fas fa-comment-dots"></i></button>
+                <button class="btn bg-transparent" id="bopen">Open chat   <i class="fa fa-comment"></i></button>
             </div>
         </div>
     </div>
@@ -118,6 +118,16 @@
     $("#bclose").click(function(){
         $("#frame").hide();
         $("#frame2").show();
+    });
+
+    $("#bclose1").click(function(){
+        $("#frame1").hide();
+        $("#frame2").show();
+    });
+
+    $("#bopen").click(function(){
+        $("#frame").show();
+        $("#frame2").hide();
     });
 
     function newMessage() {
