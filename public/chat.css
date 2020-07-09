@@ -279,5 +279,9 @@ body {
   white-space: nowrap;
 }
 .icog{
-  fon
+  font-size: 12px;
+  color: #ffffff;
+}
+.icoh{
+  font-size: 10px;
 }
