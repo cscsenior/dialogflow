@@ -187,6 +187,7 @@ body {
 }
 
 .w3-s{
+  font-weight: bold;
   background: #00A9D4 !important; 
   color: #fff !important;
   border-radius: 8px;
@@ -208,6 +209,7 @@ body {
 }
 
 .w3-ss{
+  font-weight: bold;
   background: #fff !important; 
   color: #00A9D4 !important;
   border-radius: 8px;
@@ -226,4 +228,30 @@ body {
   font-family: "proxima-nova", "Source Sans Pro", sans-serif;
   font-size: 1em;
   letter-spacing: 0.1px;
+}
+
+.w3-ss:hover{
+  font-weight: bold;
+  background: #DDDDDD !important; 
+  color: #00A9D4 !important;
+  border-radius: 8px;
+  border: 1px solid #ccc!important;
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: "proxima-nova", "Source Sans Pro", sans-serif;
+  font-size: 1em;
+  letter-spacing: 0.1px;
+}
+
+.w3-p{
+  margin: 30px;
 }
